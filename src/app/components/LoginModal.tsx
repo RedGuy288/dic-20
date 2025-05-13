@@ -8,7 +8,6 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
-  if (!isOpen) return null;
 
   if (!isOpen) return null;
 
