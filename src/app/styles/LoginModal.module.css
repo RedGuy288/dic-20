@@ -1,0 +1,72 @@
+/* LoginModal.module.css */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* fond semi-transparent */
+    z-index: 50;
+  }
+  
+  .modalContent {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 20rem; /* Ajuster la taille selon besoin */
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    color: #555;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }
+  
+  .modalTitle {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .modalFormInput {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;  /* Ajout d'une marge entre les champs de saisie */
+    border-radius: 0.5rem;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+  }
+  
+  .modalFormInput:focus {
+    border-color: #4B9BFF;
+    outline: none;
+  }
+  
+  .submitButton {
+    background-color: #4B9BFF;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+  
+  .submitButton:hover {
+    background-color: #3578e5;
+  }
+  
