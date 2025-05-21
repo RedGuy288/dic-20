@@ -6,13 +6,11 @@ import { Pencil } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "./components/LoginModal";
 import styles from "./styles/ImageGrid.module.css";
-import { useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 
 export default function ImageGridPage() {
   const [enabled, setEnabled] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const images = [
     { src: "/ltdm_logo.jpg", text: "Les Terres de Miseria", href: "/ltdm", styleClass: styles.textLtdm , alt: "Les Terres de Miseria" },
