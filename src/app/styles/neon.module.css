@@ -1,0 +1,235 @@
+/* === THEME CLAIR (par défaut) === */
+
+.universeContainer {
+  display: flex;
+  height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+  background: linear-gradient(135deg, #f8f8f8, #e0e0e0);
+  color: #222;
+  overflow: auto;
+}
+
+.title {
+  font-family: 'Courier New', Courier, monospace;
+  color: #800080;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #800080 transparent;
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content::-webkit-scrollbar-thumb {
+  background: #800080;
+  border-radius: 4px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.entityCard {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #800080;
+  box-shadow: 0 0 6px #80008060;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.entityCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #800080;
+}
+
+.entityName {
+  text-align: center;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  background: linear-gradient(90deg, #800080cc, #a060a0cc);
+  color: #fff;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  user-select: none;
+  letter-spacing: 0.05em;
+}
+
+.sidebar {
+  width: 240px;
+  background: #ddd;
+  color: #800080;
+  padding: 2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 4px solid #800080;
+}
+
+.groupList {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.groupItem {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.groupItem:hover {
+  background: #d0a0d0;
+}
+
+.groupItem.active {
+  background: #800080;
+  color: #fff;
+}
+
+.topControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  color: #800080;
+}
+
+/* === THEME SOMBRE NEON RETRO === */
+
+:global(.dark) .universeContainer {
+  background: linear-gradient(135deg, #0d0d1a, #1a0d33);
+  color: #00fff7;
+  text-shadow:
+    0 0 5px #00fff7,
+    0 0 10px #00fff7,
+    0 0 20px #00fff7,
+    0 0 40px #0ff,
+    0 0 80px #0ff;
+  overflow: hidden;
+}
+
+:global(.dark) .title {
+  color: #ff00ff;
+  text-shadow:
+    0 0 5px #ff00ff,
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff,
+    0 0 40px #f0f,
+    0 0 80px #f0f;
+  animation: flicker 3s infinite;
+}
+
+:global(.dark) .content {
+  scrollbar-color: #00fff7 transparent;
+}
+:global(.dark) .content::-webkit-scrollbar-thumb {
+  background: #00fff7;
+  box-shadow: 0 0 10px #00fff7;
+}
+
+:global(.dark) .entityCard {
+  background: #111022;
+  border: 1px solid #ff00ff;
+  box-shadow:
+    0 0 10px #ff00ff,
+    inset 0 0 15px #ff00ff,
+    0 0 30px #ff00ff;
+  animation: pulseGlow 4s infinite alternate;
+}
+:global(.dark) .entityCard:hover {
+  box-shadow:
+    0 0 20px #00fff7,
+    inset 0 0 25px #00fff7,
+    0 0 40px #0ff;
+  border-color: #00fff7;
+}
+
+:global(.dark) .entityName {
+  background: linear-gradient(90deg, rgba(255,0,255,0.9), rgba(255,0,255,0.6));
+  text-shadow:
+    0 0 8px #fff,
+    0 0 15px #ff00ff;
+}
+
+:global(.dark) .sidebar {
+  background: #1b0b3a;
+  color: #ff33ff;
+  border-right: 4px solid #ff00ff;
+  box-shadow: 0 0 15px #ff00ff inset;
+}
+
+:global(.dark) .groupItem {
+  color: #ff33ff;
+  text-shadow: 0 0 5px #ff33ff;
+}
+:global(.dark) .groupItem:hover {
+  background: #660066;
+  box-shadow:
+    0 0 10px #ff33ff,
+    0 0 20px #ff33ff;
+}
+:global(.dark) .groupItem.active {
+  background: #ff33ff;
+  color: #220022;
+  box-shadow:
+    0 0 15px #ff33ff,
+    0 0 30px #ff33ff;
+}
+
+:global(.dark) .topControls {
+  color: #ff33ff;
+  text-shadow: 0 0 8px #ff33ff;
+}
+
+/* === ANIMATIONS === */
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 10px #ff00ff,
+      inset 0 0 15px #ff00ff,
+      0 0 30px #ff00ff;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #ff66ff,
+      inset 0 0 25px #ff66ff,
+      0 0 40px #ff66ff;
+  }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.6;
+  }
+}
