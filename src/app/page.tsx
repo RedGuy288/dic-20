@@ -1,4 +1,9 @@
 "use client";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+fetch(`${apiUrl}/endpoint`)
+  .then(res => res.json())
+  .then(data => console.log(data));
 
 import { Pencil } from "lucide-react";
 import { useState } from "react";
