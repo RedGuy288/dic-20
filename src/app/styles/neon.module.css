@@ -77,14 +77,44 @@
 }
 
 .sidebar {
-  width: 240px;
+  width: 70px;
   background: #ddd;
   color: #800080;
-  padding: 2rem 1.2rem;
+  padding: 0 0; /* réduit pour que le carré colle bien en haut */
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-right: 4px solid #800080;
 }
+
+/* === HOME BUTTON === */
+.homeButton {
+   width: 100%;
+  height: 70px; /* même taille que la largeur de la sidebar, carré parfait */
+  background-color: #800080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  margin: 0; /* pas d’espace */
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Icône à l’intérieur (centrée, taille adaptée) */
+.homeIcon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: white;
+}
+
+/* Aucun effet au survol */
+.homeButton:hover {
+  background-color: #800080;
+}
+
 
 .groupList {
   list-style: none;
@@ -93,7 +123,7 @@
 }
 
 .groupItem {
-  padding: 0.7rem 1rem;
+  padding: 1rem 1rem;
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.3s ease;
@@ -121,6 +151,11 @@
   color: #800080;
 }
 
+.objectIcon{
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
 /* === THEME SOMBRE NEON RETRO === */
 
 :global(.dark) .universeContainer {
@@ -144,6 +179,14 @@
     0 0 40px #f0f,
     0 0 80px #f0f;
   animation: flicker 3s infinite;
+}
+
+:global(.dark) .homeButton {
+  background-color: #ff00ff;
+}
+
+:global(.dark) .homeIcon {
+  color: #220022;
 }
 
 :global(.dark) .content {
@@ -181,7 +224,7 @@
 :global(.dark) .sidebar {
   background: #1b0b3a;
   color: #ff33ff;
-  border-right: 4px solid #ff00ff;
+  border-right: 3px solid #ff00ff;
   box-shadow: 0 0 15px #ff00ff inset;
 }
 

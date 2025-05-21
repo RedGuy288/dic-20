@@ -5,6 +5,12 @@ import styles from "../styles/neon.module.css";
 import stylesLogin from "../styles/ImageGrid.module.css"
 import LoginModal from '../components/LoginModal';
 import ThemeToggle from '../components/ThemeToggle';
+import { FaUserAstronaut } from "react-icons/fa";
+import { FaHandHoldingDollar } from "react-icons/fa6";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaDiceD20 } from "react-icons/fa";
+import Link from 'next/link';
+
 
 
 const objectGroups = ['Personnages', 'Lieux', 'Organisations', 'Cartes'] as const;
@@ -38,16 +44,43 @@ export default function UniversePage() {
 
       {/* Sidebar */}
       <aside className={styles.sidebar}>
+
+        
+        <Link href="/" className={styles.homeButton} title="Accueil">
+          <FaDiceD20
+            className={styles.homeIcon}
+          />
+        </Link>
+
+
         <ul className={styles.groupList}>
-          {objectGroups.map((group) => (
-            <li
-              key={group}
-              className={`${styles.groupItem} ${group === selectedGroup ? styles.active : ''}`}
-              onClick={() => setSelectedGroup(group)}
-            >
-              {group}
-            </li>
-          ))}
+          <li
+            key="Personnage"
+            className={`${styles.groupItem} ${objectGroups[0] === selectedGroup ? styles.active : ''}`}
+            onClick={() => setSelectedGroup(objectGroups[0])}
+          >
+            <FaUserAstronaut
+              className={styles.objectIcon}
+            />
+          </li>
+          <li
+            key="Lieux"
+            className={`${styles.groupItem} ${objectGroups[1] === selectedGroup ? styles.active : ''}`}
+            onClick={() => setSelectedGroup(objectGroups[1])}
+          >
+            <FaMapMarkerAlt
+              className={styles.objectIcon}
+            />
+          </li>
+          <li
+            key="Organisations"
+            className={`${styles.groupItem} ${objectGroups[2] === selectedGroup ? styles.active : ''}`}
+            onClick={() => setSelectedGroup(objectGroups[2])}
+          >
+            <FaHandHoldingDollar
+              className={styles.objectIcon}
+            />
+          </li>
         </ul>
       </aside>
 
