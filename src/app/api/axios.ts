@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001/src/app/api", // ← adapte à ton backend
-  withCredentials: true, // ← pour envoyer les cookies refresh_token
+  baseURL: "http://localhost:3001/api",
+  withCredentials: true,
 });
 
 // Ajoute automatiquement le JWT access token dans les headers

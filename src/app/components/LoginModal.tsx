@@ -30,7 +30,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       onClose(); // ferme la modal
       window.location.reload(); // recharge pour rafraîchir le contexte
     } catch (err: any) {
-      setError(err.response?.data || "Erreur lors de la connexion");
+      setError(err.response?.data?.message || "Erreur lors de la connexion");
     }
   };
 

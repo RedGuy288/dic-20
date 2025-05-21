@@ -1,0 +1,127 @@
+/* ImageGridPage.css */
+
+.page-container {
+  min-height: 100vh;
+  background-color: #f3f4f6; /* bg-gray-100 */
+  position: relative;
+}
+
+.login-button {
+  width: 2.5rem; /* 10 */
+  height: 2.5rem;
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 700;
+  font-size: 1.125rem; /* text-lg */
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #1d4ed8; /* bg-blue-700 */
+}
+
+.image-grid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 16rem); /* 64 */
+  gap: 1.5rem; /* 6 */
+}
+
+.grid-item {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 1rem; /* rounded-2xl */
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  cursor: pointer;
+}
+
+.grid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+
+.grid-item:hover .grid-image {
+  opacity: 1;
+}
+
+.grid-text-container {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem; /* text-xl */
+  text-align: center;
+  padding: 0 0.5rem; /* px-2 */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.75);
+}
+
+.toggle-container {
+  position: absolute;
+  bottom: 1rem; /* 4 */
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 1 */
+}
+
+.toggle-button {
+  width: 3.5rem; /* 14 */
+  height: 2rem; /* 8 */
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.25rem; /* 1 */
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.toggle-button.enabled {
+  background-color: #22c55e; /* bg-green-500 */
+}
+
+.toggle-button.disabled {
+  background-color: #9ca3af; /* bg-gray-400 */
+}
+
+.toggle-circle {
+  background-color: white;
+  width: 1.5rem; /* 6 */
+  height: 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.toggle-circle.enabled {
+  transform: translateX(1.5rem); /* translate-x-6 */
+}
+
+.toggle-circle.disabled {
+  transform: translateX(0);
+}
