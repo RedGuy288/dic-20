@@ -29,9 +29,14 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       localStorage.setItem("jwt", token); // stocke le token d'accès
       onClose(); // ferme la modal
       window.location.reload(); // recharge pour rafraîchir le contexte
-    } catch (err: any) {
-      setError(err.response?.data?.message || "Erreur lors de la connexion");
-    }
+    } catch (err: unknown) {
+        if (err && typeof err === "object" && "response" in err) {
+          const axiosError = err as { response?: { data?: { message?: string } } };
+          setError(axiosError.response?.data?.message || "Erreur lors de la connexion");
+    } else {
+      setError("Erreur inconnue");
+  }
+}
   };
 
   return (

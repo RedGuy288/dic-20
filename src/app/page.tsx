@@ -1,10 +1,6 @@
 "use client";
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-fetch(`${apiUrl}/endpoint`)
-  .then(res => res.json())
-  .then(data => console.log(data));
-
+import Image from 'next/image';
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "./components/LoginModal";
@@ -43,10 +39,11 @@ export default function ImageGridPage() {
               className={`relative group w-64 h-64 rounded-2xl overflow-hidden shadow-lg ${styles.imageItem}`}
             >
               {/* Background image with blur & opacity */}
-              <img
+              <Image
                 src={img.src}
                 alt={img.alt}
                 className="w-full h-full object-cover absolute top-0 left-0 transition-all duration-500 opacity-80 group-hover:blur-0 group-hover:opacity-100 z-10"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
               {/* Bande rétro animée pour Néon */}
               {img.text === "Néon" && (
