@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import styles from "../styles/LoginModal.module.css";
 import api from "../api/axios"
+import { useRef } from "react";
 
 interface LoginModalProps { 
   isOpen: boolean;
@@ -11,8 +12,15 @@ interface LoginModalProps {
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [error, setError] = useState("");
+
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      onClose();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -21,7 +29,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     setError("");
 
     try {
-      const route = isRegisterMode ? "/auth/register" : "/auth/login";
+      const route = "/auth/login";
 
       const response = await api.post(route, { email, password });
       const token = response.data.accessToken;
@@ -40,14 +48,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   };
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
+    <div className={styles.modalOverlay} onClick={handleOverlayClick}>
+      <div  className={styles.modalContent}>
         <button onClick={onClose} className={styles.closeButton}>
           <X className="w-5 h-5" />
         </button>
-        <h2 className={styles.modalTitle}>
-          {isRegisterMode ? "Inscription" : "Connexion"}
-        </h2>
+        <h2 className={styles.modalTitleBox}>Connexion</h2>
 
         <form className="modalForm" onSubmit={handleSubmit}>
           <input
@@ -68,16 +74,16 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           {error && <p className={styles.errorText}>{error}</p>}
 
           <button type="submit" className={styles.submitButton}>
-            {isRegisterMode ? "S'inscrire" : "Se connecter"}
+            Se connecter
           </button>
 
-          <button
+          <a
+            href = "/inscription"
             type="button"
-            onClick={() => setIsRegisterMode(!isRegisterMode)}
-            className={styles.switchModeButton}
+            className={styles.signupButton}
           >
-            {isRegisterMode ? "Déjà inscrit ? Se connecter" : "Créer un compte"}
-          </button>
+            Créer un compte
+          </a>
         </form>
       </div>
     </div>
